@@ -17,7 +17,7 @@
   "workers_dev": true,
   "rate_limits": [
     {
-      "binding": "API_RATE_LIMITER",
+      "binding": "RATE_LIMITER",
       "namespace_id": "1598",
       "simple": { "limit": 10, "period": 10 }
     }
