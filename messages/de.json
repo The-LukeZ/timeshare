@@ -1,0 +1,15 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "label_moment": "Moment",
+  "detecting_timezone": "Zeitzone wird erkannt…",
+  "detected_timezone": "erkannt · {timezone}",
+  "label_verification": "Verifizierung",
+  "btn_share": "Diesen Moment teilen",
+  "footer_description": "Empfänger sehen diesen Moment in ihrer lokalen Zeitzone. Kein Konto erforderlich.",
+  "label_your_local_time": "Ihre Ortszeit",
+  "label_originally_shared_as": "Ursprünglich geteilt als",
+  "label_same_timezone": "Gleiche Zeitzone wie Ersteller · {timezone}",
+  "label_origin": "Ursprung",
+  "resolving": "wird aufgelöst…",
+  "link_share_another": "Weiteren Moment teilen"
+}

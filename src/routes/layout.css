@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #080808;
+  --color-accent: #f59e0b;
+  --color-error: #d97706;
+  --color-error-border: #b45309;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-accent: var(--color-accent);
+  --color-error: var(--color-error);
+  --color-error-border: var(--color-error-border);
+}

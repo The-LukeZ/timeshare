@@ -1,0 +1,24 @@
+{
+  "name": "timeshare",
+  "main": ".svelte-kit/cloudflare/_worker.js",
+  "compatibility_date": "2026-05-16",
+  "compatibility_flags": ["nodejs_als_v2", "nodejs_compat"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".svelte-kit/cloudflare"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "route": {
+    "pattern": "timeshare.thelukez.com",
+    "custom_domain": true
+  },
+  "workers_dev": true,
+  "rate_limits": [
+    {
+      "binding": "RATE_LIMITER",
+      "namespace_id": "1598"
+    }
+  ]
+}
