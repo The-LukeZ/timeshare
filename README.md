@@ -13,7 +13,7 @@ Share a moment in time with anyone, anywhere. You pick a date and time, get a li
 - SvelteKit + Cloudflare Workers
 - Cloudflare D1 (SQLite) for storing timestamps
 - Tailwind CSS v4
-- Paraglide for i18n (English, German, French, Spanish)
+- Paraglide for i18n
 
 ## Development
 
