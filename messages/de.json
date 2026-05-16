@@ -11,5 +11,10 @@
   "label_same_timezone": "Gleiche Zeitzone wie Ersteller · {timezone}",
   "label_origin": "Ursprung",
   "resolving": "wird aufgelöst…",
-  "link_share_another": "Weiteren Moment teilen"
+  "link_share_another": "Weiteren Moment teilen",
+  "nav_my_moments": "Meine Momente",
+  "history_title": "Meine Momente",
+  "history_empty": "Noch keine Momente geteilt.",
+  "history_clear": "Verlauf löschen",
+  "history_label_shared_at": "Geteilt"
 }

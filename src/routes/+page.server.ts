@@ -43,6 +43,6 @@ export const actions = {
 
     if (error || !row) return fail(500, { error: "Failed to save. Please try again." });
 
-    redirect(303, `/${row.id}`);
+    redirect(303, `/${row.id}?created=1`);
   },
 };

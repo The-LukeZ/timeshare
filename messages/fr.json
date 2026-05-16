@@ -11,5 +11,10 @@
   "label_same_timezone": "Même fuseau horaire que le créateur · {timezone}",
   "label_origin": "Origine",
   "resolving": "résolution…",
-  "link_share_another": "Partager un autre moment"
+  "link_share_another": "Partager un autre moment",
+  "nav_my_moments": "Mes moments",
+  "history_title": "Mes moments",
+  "history_empty": "Aucun moment partagé pour l'instant.",
+  "history_clear": "Effacer l'historique",
+  "history_label_shared_at": "Partagé"
 }

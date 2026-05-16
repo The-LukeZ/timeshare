@@ -11,5 +11,10 @@
   "label_same_timezone": "Misma zona horaria que el creador · {timezone}",
   "label_origin": "Origen",
   "resolving": "resolviendo…",
-  "link_share_another": "Compartir otro momento"
+  "link_share_another": "Compartir otro momento",
+  "nav_my_moments": "Mis momentos",
+  "history_title": "Mis momentos",
+  "history_empty": "Aún no se han compartido momentos.",
+  "history_clear": "Borrar historial",
+  "history_label_shared_at": "Compartido"
 }

@@ -11,6 +11,7 @@ export async function load({ params }) {
   if (err || !data) error(404, "Timestamp not found");
 
   return {
+    id: params.id,
     ts: data.ts,
     creatorTimezone: data.creator_timezone,
   };

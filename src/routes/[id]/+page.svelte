@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { resolve } from "$app/paths";
+  import { page } from "$app/state";
   import * as m from "$lib/paraglide/messages.js";
   import ArrowLeft from "$lib/assets/arrow-left.svelte";
 
@@ -17,6 +18,19 @@
     const date = new Date(data.ts);
     viewerTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     sameZone = viewerTimezone === data.creatorTimezone;
+
+    if (page.url.searchParams.get("created") === "1") {
+      const key = "timeshare_history";
+      const existing: Array<{ id: string; ts: string; creatorTimezone: string; savedAt: string }> =
+        JSON.parse(localStorage.getItem(key) ?? "[]");
+      const entry = {
+        id: data.id,
+        ts: data.ts,
+        creatorTimezone: data.creatorTimezone,
+        savedAt: new Date().toISOString(),
+      };
+      localStorage.setItem(key, JSON.stringify([entry, ...existing.filter((e) => e.id !== entry.id)]));
+    }
 
     viewerTime = new Intl.DateTimeFormat(undefined, {
       timeZone: viewerTimezone,
@@ -124,13 +138,21 @@
     <!-- Footer -->
     <footer class="mt-4">
       <div class="mb-5 h-px bg-stone-900"></div>
-      <a
-        href={resolve("/")}
-        class="text-xs tracking-[0.35em] text-stone-500 uppercase transition-colors duration-300 hover:text-accent/70"
-      >
-        <ArrowLeft />
-        {m.link_share_another()}
-      </a>
+      <div class="flex flex-col items-center justify-between gap-4">
+        <a
+          href={resolve("/")}
+          class="text-xs tracking-[0.35em] text-stone-500 uppercase transition-colors duration-300 hover:text-accent/70"
+        >
+          <ArrowLeft />
+          {m.link_share_another()}
+        </a>
+        <a
+          href={resolve("/history")}
+          class="text-xs tracking-[0.35em] text-stone-500 uppercase transition-colors duration-300 hover:text-accent/70"
+        >
+          {m.nav_my_moments()}
+        </a>
+      </div>
     </footer>
   </div>
 </main>

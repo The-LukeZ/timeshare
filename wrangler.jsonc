@@ -15,9 +15,9 @@
     "custom_domain": true
   },
   "workers_dev": true,
-  "rate_limits": [
+  "ratelimits": [
     {
-      "binding": "RATE_LIMITER",
+      "name": "RATE_LIMITER",
       "namespace_id": "1598",
       "simple": { "limit": 10, "period": 10 }
     }

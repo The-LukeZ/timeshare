@@ -4,6 +4,7 @@
   import ArrowRight from "$lib/assets/arrow-right.svelte";
 
   import * as m from "$lib/paraglide/messages.js";
+  import { resolve } from "$app/paths";
 
   let { form } = $props();
 
@@ -90,9 +91,19 @@
     <!-- Footer rule -->
     <footer class="mt-14">
       <div class="mb-5 h-px bg-stone-900"></div>
-      <p class="text-xs leading-relaxed tracking-wide text-stone-500">
-        {m.footer_description()}
-      </p>
+      <div class="flex flex-col items-start justify-between gap-4">
+        <p class="text-xs leading-relaxed tracking-wide text-stone-500">
+          {m.footer_description()}
+        </p>
+        {#if mounted}
+          <a
+            href={resolve("/history")}
+            class="shrink-0 text-xs tracking-[0.35em] text-stone-500 uppercase transition-colors duration-300 hover:text-accent/70"
+          >
+            {m.nav_my_moments()}
+          </a>
+        {/if}
+      </div>
     </footer>
   </div>
 </main>
