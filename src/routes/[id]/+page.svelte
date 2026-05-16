@@ -49,7 +49,6 @@
       timeZone: viewerTimezone,
       hour: "numeric",
       minute: "2-digit",
-      hour12: true,
     }).format(date);
 
     viewerDate = new Intl.DateTimeFormat(undefined, {
@@ -64,7 +63,6 @@
       timeZone: data.creatorTimezone,
       hour: "numeric",
       minute: "2-digit",
-      hour12: true,
     }).format(date);
 
     mounted = true;
