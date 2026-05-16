@@ -5,6 +5,7 @@
 
   import * as m from "$lib/paraglide/messages.js";
   import { resolve } from "$app/paths";
+  import { browser } from "$app/environment";
 
   let { form } = $props();
 
@@ -19,10 +20,12 @@
     timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     mounted = true;
     await tick();
-    (window as any).turnstile?.render('#cf-turnstile-container', {
-      sitekey: PUBLIC_TURNSTILE_SITE_KEY,
-      theme: 'dark',
-    });
+    if (browser) {
+      (window as any).turnstile?.render("#cf-turnstile-container", {
+        sitekey: PUBLIC_TURNSTILE_SITE_KEY,
+        theme: "dark",
+      });
+    }
   });
 </script>
 

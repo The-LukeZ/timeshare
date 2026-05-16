@@ -4,6 +4,7 @@
   "detecting_timezone": "Detectando o fuso horário…",
   "detected_timezone": "detectado · {timezone}",
   "label_verification": "Verificação",
+  "btn_copy_link": "Copiar link",
   "btn_share": "Compartilhe este momento",
   "footer_description": "Os destinatários visualizam este momento convertido para o seu fuso horário local. Não é necessário criar uma conta.",
   "label_your_local_time": "Sua hora local",

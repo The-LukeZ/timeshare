@@ -4,6 +4,7 @@
   "detecting_timezone": "detecting timezone…",
   "detected_timezone": "detected · {timezone}",
   "label_verification": "Verification",
+  "btn_copy_link": "Copy link",
   "btn_share": "Share this moment",
   "footer_description": "Recipients see this moment converted to their local timezone. No account required.",
   "label_your_local_time": "Your local time",

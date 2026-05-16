@@ -4,6 +4,7 @@
   "detecting_timezone": "正在检测时区…",
   "detected_timezone": "检测到 · {timezone}",
   "label_verification": "确认",
+  "btn_copy_link": "复制链接",
   "btn_share": "分享这一刻",
   "footer_description": "收件人将看到此时间已转换为其当地时区。无需注册账号。",
   "label_your_local_time": "您所在时区",

@@ -4,6 +4,7 @@
   "detecting_timezone": "جارٍ الكشف عن المنطقة الزمنية...",
   "detected_timezone": "تم الكشف عن · {timezone}",
   "label_verification": "تَحَقّق",
+  "btn_copy_link": "نسخ الرابط",
   "btn_share": "شارك هذه اللحظة",
   "footer_description": "يرى المستلمون هذه اللحظة مُحوّلة إلى منطقتهم الزمنية المحلية. لا يلزم وجود حساب.",
   "label_your_local_time": "توقيتك المحلي",

@@ -4,6 +4,7 @@
   "detecting_timezone": "Определение часового пояса…",
   "detected_timezone": "обнаружено · {timezone}",
   "label_verification": "Проверка",
+  "btn_copy_link": "Копировать ссылку",
   "btn_share": "Поделитесь этим моментом",
   "footer_description": "Получатели увидят это сообщение в своем местном часовом поясе. Регистрация не требуется.",
   "label_your_local_time": "Ваше местное время",

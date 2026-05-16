@@ -9,6 +9,12 @@
 
   let mounted = $state(false);
 
+  async function copyLink() {
+    const url = page.url.origin + page.url.pathname;
+    await navigator.clipboard.writeText(url);
+    alert('Link copied to clipboard!');
+  }
+
   const pageTitle = (() => {
     const d = new Date(data.ts);
     const label = new Intl.DateTimeFormat(undefined, {
@@ -158,6 +164,13 @@
     <footer class="mt-4">
       <div class="mb-5 h-px bg-stone-900"></div>
       <div class="flex flex-col items-center justify-between gap-4">
+        <button
+          type="button"
+          onclick={copyLink}
+          class="w-full cursor-pointer border border-accent/40 py-3.5 text-sm font-normal tracking-[0.35em] text-accent uppercase transition-all duration-300 hover:border-accent hover:bg-accent hover:text-bg"
+        >
+          {m.btn_copy_link()}
+        </button>
         <a
           href={resolve("/")}
           class="text-xs tracking-[0.35em] text-stone-500 uppercase transition-colors duration-300 hover:text-accent/70"

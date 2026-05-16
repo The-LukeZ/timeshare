@@ -4,6 +4,7 @@
   "detecting_timezone": "Zeitzone wird erkannt…",
   "detected_timezone": "erkannt · {timezone}",
   "label_verification": "Verifizierung",
+  "btn_copy_link": "Link kopieren",
   "btn_share": "Diesen Moment teilen",
   "footer_description": "Empfänger sehen diesen Moment in ihrer lokalen Zeitzone. Kein Konto erforderlich.",
   "label_your_local_time": "Ihre Ortszeit",
