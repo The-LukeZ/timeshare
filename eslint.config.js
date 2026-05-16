@@ -41,7 +41,7 @@ export default defineConfig(
     // 'svelte/button-has-type': 'error'
     rules: {
       "svelte/require-each-key": "warn",
-      "no-unused-vars": "warn",
+      "@typescript-eslint/no-unused-vars": "warn",
     },
   },
 );
