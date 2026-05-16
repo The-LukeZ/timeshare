@@ -3,6 +3,27 @@ import { dev } from "$app/environment";
 import { TURNSTILE_SECRET_KEY } from "$env/static/private";
 import { supabase } from "$lib/server/supabase";
 
+function naiveLocalToUTC(localDateTimeStr: string, timezone: string): string {
+  const normalized = localDateTimeStr.length === 16 ? localDateTimeStr + ":00" : localDateTimeStr;
+  const approxUTC = new Date(normalized + "Z");
+  const f = new Intl.DateTimeFormat("en-CA", {
+    timeZone: timezone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  });
+  const parts = Object.fromEntries(f.formatToParts(approxUTC).map((p) => [p.type, p.value]));
+  const localAsUTC = new Date(
+    `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}:${parts.second}Z`,
+  );
+  const offsetMs = localAsUTC.getTime() - approxUTC.getTime();
+  return new Date(approxUTC.getTime() - offsetMs).toISOString();
+}
+
 export const actions = {
   default: async ({ request, platform, getClientAddress }) => {
     const ip = getClientAddress();
@@ -35,9 +56,10 @@ export const actions = {
       return fail(400, { error: "Invalid timezone." });
     }
 
+    const utcTs = naiveLocalToUTC(ts, creatorTimezone);
     const { data: row, error } = await supabase
       .from("timestamps")
-      .insert({ ts, creator_timezone: creatorTimezone })
+      .insert({ ts: utcTs, creator_timezone: creatorTimezone })
       .select("id")
       .single();
 

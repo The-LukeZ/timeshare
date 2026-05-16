@@ -32,7 +32,7 @@ npx wrangler deploy   # deploy to Cloudflare Workers
 
 ### Data flow
 
-1. `POST /` → `src/routes/+page.server.ts` — rate-limit (CF Rate Limiter binding), Turnstile verification, insert into `timestamps` table, redirect to `/:id?created=1`
+1. `POST /` → `src/routes/+page.server.ts` — rate-limit (CF Rate Limiter binding), Turnstile verification, convert naive local datetime string + `creatorTimezone` to UTC ISO (via `naiveLocalToUTC`), insert into `timestamps` table, redirect to `/:id?created=1`
 2. `GET /:id` → `src/routes/[id]/+page.server.ts` — fetch row by UUID, pass `id` + `ts` (UTC ISO) + `creatorTimezone` to page
 3. `src/routes/[id]/+page.svelte` — `onMount` detects viewer timezone, formats both times client-side. Uses `{#if mounted}` guard to avoid SSR hydration mismatch. If `?created=1` query param present, saves entry to `timeshare_history` in localStorage.
 4. `GET /history` → `src/routes/history/+page.svelte` — client-only page, reads `timeshare_history` from localStorage, lists all moments the user created with links back to `/:id`.
