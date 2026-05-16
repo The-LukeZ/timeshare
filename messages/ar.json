@@ -1,0 +1,20 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"label_moment": "لحظة",
+	"detecting_timezone": "جارٍ الكشف عن المنطقة الزمنية...",
+	"detected_timezone": "تم الكشف عن · {timezone}",
+	"label_verification": "تَحَقّق",
+	"btn_share": "شارك هذه اللحظة",
+	"footer_description": "يرى المستلمون هذه اللحظة مُحوّلة إلى منطقتهم الزمنية المحلية. لا يلزم وجود حساب.",
+	"label_your_local_time": "توقيتك المحلي",
+	"label_originally_shared_as": "تمت مشاركتها في الأصل على النحو التالي:",
+	"label_same_timezone": "نفس المنطقة الزمنية للمنشئ · {timezone}",
+	"label_origin": "أصل",
+	"resolving": "جارٍ حلّ...",
+	"link_share_another": "شارك لحظة أخرى",
+	"nav_my_moments": "لحظاتي",
+	"history_title": "لحظاتي",
+	"history_empty": "لم يتم مشاركة أي لحظات حتى الآن.",
+	"history_clear": "سجل نظيف",
+	"history_label_shared_at": "مشترك"
+}

@@ -1,0 +1,20 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"label_moment": "पल",
+	"detecting_timezone": "समय क्षेत्र का पता लगाया जा रहा है…",
+	"detected_timezone": "पता चला · {timezone}",
+	"label_verification": "सत्यापन",
+	"btn_share": "इस पल को साझा करें",
+	"footer_description": "प्राप्तकर्ताओं को यह क्षण उनके स्थानीय समय क्षेत्र में परिवर्तित रूप में दिखाई देगा। किसी खाते की आवश्यकता नहीं है।",
+	"label_your_local_time": "आपका स्थानीय समय",
+	"label_originally_shared_as": "मूल रूप से साझा किया गया",
+	"label_same_timezone": "निर्माता के समान समय क्षेत्र · {timezone}",
+	"label_origin": "मूल",
+	"resolving": "हल करना…",
+	"link_share_another": "एक और पल साझा करें",
+	"nav_my_moments": "मेरे पल",
+	"history_title": "मेरे पल",
+	"history_empty": "अभी तक कोई भी पल साझा नहीं किया गया है।",
+	"history_clear": "इतिहास मिटा दें",
+	"history_label_shared_at": "साझा"
+}

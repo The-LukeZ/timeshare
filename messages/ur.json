@@ -1,0 +1,20 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"label_moment": "لمحہ",
+	"detecting_timezone": "ٹائم زون کا پتہ لگا رہا ہے…",
+	"detected_timezone": "پتہ چلا · {timezone}",
+	"label_verification": "تصدیق",
+	"btn_share": "اس لمحے کو شیئر کریں۔",
+	"footer_description": "وصول کنندگان اس لمحے کو اپنے مقامی ٹائم زون میں تبدیل ہوتے ہوئے دیکھتے ہیں۔ کوئی اکاؤنٹ درکار نہیں۔",
+	"label_your_local_time": "آپ کا مقامی وقت",
+	"label_originally_shared_as": "اصل میں بطور اشتراک کیا گیا۔",
+	"label_same_timezone": "تخلیق کار کے طور پر ایک ہی ٹائم زون · {timezone}",
+	"label_origin": "اصل",
+	"resolving": "حل کر رہا ہے…",
+	"link_share_another": "ایک اور لمحہ شیئر کریں۔",
+	"nav_my_moments": "میرے لمحات",
+	"history_title": "میرے لمحات",
+	"history_empty": "ابھی تک کوئی لمحات کا اشتراک نہیں کیا گیا ہے۔",
+	"history_clear": "تاریخ صاف کریں۔",
+	"history_label_shared_at": "مشترکہ"
+}

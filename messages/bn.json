@@ -1,0 +1,20 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"label_moment": "মুহূর্ত",
+	"detecting_timezone": "টাইমজোন শনাক্ত করা হচ্ছে…",
+	"detected_timezone": "শনাক্ত করা হয়েছে · {timezone}",
+	"label_verification": "যাচাইকরণ",
+	"btn_share": "এই মুহূর্তটি ভাগ করে নিন",
+	"footer_description": "প্রাপকরা এই মুহূর্তটি তাদের স্থানীয় সময় অনুযায়ী রূপান্তরিত অবস্থায় দেখতে পান। কোনো অ্যাকাউন্টের প্রয়োজন নেই।",
+	"label_your_local_time": "আপনার স্থানীয় সময়",
+	"label_originally_shared_as": "মূলত শেয়ার করা হয়েছে",
+	"label_same_timezone": "সৃষ্টিকর্তার মতো একই সময় অঞ্চল · {timezone}",
+	"label_origin": "উৎপত্তি",
+	"resolving": "সমাধান করা হচ্ছে…",
+	"link_share_another": "আরেকটি মুহূর্ত ভাগ করুন",
+	"nav_my_moments": "আমার মুহূর্তগুলো",
+	"history_title": "আমার মুহূর্তগুলো",
+	"history_empty": "এখনো কোনো মুহূর্ত শেয়ার করা হয়নি।",
+	"history_clear": "ইতিহাস পরিষ্কার করুন",
+	"history_label_shared_at": "শেয়ার করা"
+}

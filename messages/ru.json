@@ -1,0 +1,20 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"label_moment": "Момент",
+	"detecting_timezone": "Определение часового пояса…",
+	"detected_timezone": "обнаружено · {timezone}",
+	"label_verification": "Проверка",
+	"btn_share": "Поделитесь этим моментом",
+	"footer_description": "Получатели увидят это сообщение в своем местном часовом поясе. Регистрация не требуется.",
+	"label_your_local_time": "Ваше местное время",
+	"label_originally_shared_as": "Первоначально опубликовано как",
+	"label_same_timezone": "Тот же часовой пояс, что и у создателя · {timezone}",
+	"label_origin": "Источник",
+	"resolving": "разрешение…",
+	"link_share_another": "Поделитесь еще одним моментом",
+	"nav_my_moments": "Мои моменты",
+	"history_title": "Мои моменты",
+	"history_empty": "Пока ни одна публикация не была опубликована.",
+	"history_clear": "Чистая история",
+	"history_label_shared_at": "Общий"
+}
