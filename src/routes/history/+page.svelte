@@ -35,7 +35,12 @@
   }
 
   function clearHistory() {
-    if (!confirm("Clear all saved moments?")) return;
+    if (
+      !confirm(
+        "Clear all saved moments?\nThis will only clear your local history, not the moments themselves.",
+      )
+    )
+      return;
     localStorage.removeItem(LS_KEY);
     entries = [];
   }
@@ -45,6 +50,11 @@
     mounted = true;
   });
 </script>
+
+<svelte:head>
+  <title>My moments · Timeshare</title>
+  <meta name="description" content="Moments you've shared via Timeshare." />
+</svelte:head>
 
 <main
   class="flex min-h-screen flex-col items-center justify-center bg-bg px-6 py-16 font-mono text-stone-300"

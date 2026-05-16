@@ -22,6 +22,11 @@
 </script>
 
 <svelte:head>
+  <title>Timeshare — Share a moment across timezones</title>
+  <meta
+    name="description"
+    content="Pick a date and time, share the link. Anyone who opens it sees the moment converted to their local timezone."
+  />
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </svelte:head>
 

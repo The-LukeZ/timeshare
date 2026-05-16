@@ -11,6 +11,11 @@
 
 <svelte:head>
   <link rel="icon" href={favicon} />
+  <title>Timeshare</title>
+  <meta
+    name="description"
+    content="Share a moment in time across timezones. Recipients see your moment converted to their local time — no account required."
+  />
 </svelte:head>
 
 {@render children()}

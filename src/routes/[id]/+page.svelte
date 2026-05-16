@@ -8,6 +8,20 @@
   let { data } = $props();
 
   let mounted = $state(false);
+
+  const pageTitle = (() => {
+    const d = new Date(data.ts);
+    const label = new Intl.DateTimeFormat(undefined, {
+      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    }).format(d);
+    return `${label} · Timeshare`;
+  })();
   let viewerTime = $state("");
   let viewerDate = $state("");
   let viewerTimezone = $state("");
@@ -57,6 +71,14 @@
     mounted = true;
   });
 </script>
+
+<svelte:head>
+  <title>{pageTitle}</title>
+  <meta
+    name="description"
+    content="See this moment converted to your local timezone. Shared via Timeshare."
+  />
+</svelte:head>
 
 <main
   class="flex min-h-screen flex-col items-center justify-center bg-bg px-6 py-16 font-mono text-stone-300"
