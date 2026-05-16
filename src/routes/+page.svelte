@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, tick } from "svelte";
   import { PUBLIC_TURNSTILE_SITE_KEY } from "$env/static/public";
   import ArrowRight from "$lib/assets/arrow-right.svelte";
 
@@ -12,12 +12,17 @@
   let timezone = $state("");
   let mounted = $state(false);
 
-  onMount(() => {
+  onMount(async () => {
     const now = new Date();
     const pad = (n: number) => String(n).padStart(2, "0");
     tsValue = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
     timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     mounted = true;
+    await tick();
+    (window as any).turnstile?.render('#cf-turnstile-container', {
+      sitekey: PUBLIC_TURNSTILE_SITE_KEY,
+      theme: 'dark',
+    });
   });
 </script>
 
@@ -27,7 +32,6 @@
     name="description"
     content="Pick a date and time, share the link. Anyone who opens it sees the moment converted to their local timezone."
   />
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </svelte:head>
 
 <main
@@ -70,7 +74,7 @@
       {#if mounted}
         <div>
           <p class="mb-3 text-xs tracking-[0.4em] text-stone-400 uppercase">{m.label_verification()}</p>
-          <div class="cf-turnstile" data-sitekey={PUBLIC_TURNSTILE_SITE_KEY} data-theme="dark"></div>
+          <div id="cf-turnstile-container"></div>
         </div>
       {/if}
 
