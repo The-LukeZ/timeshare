@@ -10,9 +10,9 @@
   let mounted = $state(false);
 
   async function copyLink() {
-    const url = page.url.origin + page.url.pathname;
+    const url = `${page.url.origin}${page.url.pathname}`;
     await navigator.clipboard.writeText(url);
-    alert('Link copied to clipboard!');
+    alert("Link copied to clipboard!");
   }
 
   const pageTitle = (() => {
