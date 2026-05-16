@@ -1,42 +1,46 @@
-# sv
+# Timeshare
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Share a moment in time with anyone, anywhere. You pick a date and time, get a link, and whoever opens it sees that moment converted to their local timezone.
 
-## Creating a project
+## What it does
 
-If you're seeing this, you've probably already done this step. Congrats!
+1. You enter a date and time
+2. You get a shareable link
+3. Anyone who opens the link sees the time in their own timezone
 
-```sh
-# create a new project
-npx sv create my-app
-```
+## Stack
 
-To recreate this project with the same configuration:
+- SvelteKit + Cloudflare Workers
+- Supabase (Postgres) for storing timestamps
+- Tailwind CSS v4
+- Paraglide for i18n (English, German, French, Spanish)
 
-```sh
-# recreate this project
-pnpm dlx sv@0.15.3 create --template minimal --types ts --add tailwindcss="plugins:none" prettier eslint paraglide="languageTags:en, de, fr, es+demo:no" --install pnpm timeshare
-```
+## Development
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Install dependencies:
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm install
 ```
 
-## Building
+Copy `.env.local.example` to `.env.local` and fill in your Supabase and Turnstile keys.
 
-To create a production version of your app:
+Start the dev server:
 
 ```sh
-npm run build
+pnpm dev
 ```
 
-You can preview the production build with `npm run preview`.
+Type checking:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+pnpm check
+```
+
+## Deploying
+
+```sh
+npx wrangler deploy
+```
+
+Targets `timeshare.thelukez.com` via Cloudflare Workers. Make sure your Cloudflare bindings (Rate Limiter) are configured in `wrangler.jsonc` before deploying.
