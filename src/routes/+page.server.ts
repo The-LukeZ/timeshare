@@ -1,7 +1,6 @@
 import { fail, redirect } from "@sveltejs/kit";
 import { dev } from "$app/environment";
 import { TURNSTILE_SECRET_KEY } from "$env/static/private";
-import { supabase } from "$lib/server/supabase";
 
 function naiveLocalToUTC(localDateTimeStr: string, timezone: string): string {
   const normalized = localDateTimeStr.length === 16 ? localDateTimeStr + ":00" : localDateTimeStr;
@@ -57,14 +56,17 @@ export const actions = {
     }
 
     const utcTs = naiveLocalToUTC(ts, creatorTimezone);
-    const { data: row, error } = await supabase
-      .from("timestamps")
-      .insert({ ts: utcTs, creator_timezone: creatorTimezone })
-      .select("id")
-      .single();
+    const id = crypto.randomUUID();
 
-    if (error || !row) return fail(500, { error: "Failed to save. Please try again." });
+    try {
+      await platform!.env.DB.prepare("INSERT INTO timestamps (id, ts, creator_timezone) VALUES (?, ?, ?)")
+        .bind(id, utcTs, creatorTimezone)
+        .run();
+    } catch (err) {
+      console.error(err);
+      return fail(500, { error: "Failed to save. Please try again." });
+    }
 
-    redirect(303, `/${row.id}?created=1`);
+    redirect(303, `/${id}?created=1`);
   },
 };

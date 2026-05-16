@@ -11,7 +11,7 @@ Share a moment in time with anyone, anywhere. You pick a date and time, get a li
 ## Stack
 
 - SvelteKit + Cloudflare Workers
-- Supabase (Postgres) for storing timestamps
+- Cloudflare D1 (SQLite) for storing timestamps
 - Tailwind CSS v4
 - Paraglide for i18n (English, German, French, Spanish)
 
@@ -23,7 +23,7 @@ Install dependencies:
 pnpm install
 ```
 
-Copy `.env.local.example` to `.env.local` and fill in your Supabase and Turnstile keys.
+Copy `.env.example` to `.env.local` and fill in your Turnstile keys.
 
 Start the dev server:
 
@@ -43,4 +43,4 @@ pnpm check
 npx wrangler deploy
 ```
 
-Targets `timeshare.thelukez.com` via Cloudflare Workers. Make sure your Cloudflare bindings (Rate Limiter) are configured in `wrangler.jsonc` before deploying.
+Targets `timeshare.thelukez.com` via Cloudflare Workers. Make sure `DB` (D1) and `RATE_LIMITER` bindings are configured in `wrangler.jsonc` before deploying.

@@ -1,18 +1,15 @@
 import { error } from "@sveltejs/kit";
-import { supabase } from "$lib/server/supabase";
 
-export async function load({ params }) {
-  const { data, error: err } = await supabase
-    .from("timestamps")
-    .select("ts, creator_timezone")
-    .eq("id", params.id)
-    .single();
+export async function load({ params, platform }) {
+  const row = await platform!.env.DB.prepare("SELECT ts, creator_timezone FROM timestamps WHERE id = ?")
+    .bind(params.id)
+    .first<{ ts: string; creator_timezone: string }>();
 
-  if (err || !data) error(404, "Timestamp not found");
+  if (!row) error(404, "Timestamp not found");
 
   return {
     id: params.id,
-    ts: data.ts,
-    creatorTimezone: data.creator_timezone,
+    ts: row.ts,
+    creatorTimezone: row.creator_timezone,
   };
 }

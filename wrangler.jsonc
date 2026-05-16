@@ -1,25 +1,39 @@
 {
-  "name": "timeshare",
-  "main": ".svelte-kit/cloudflare/_worker.js",
-  "compatibility_date": "2026-05-15",
-  "compatibility_flags": [ "nodejs_als", "nodejs_compat_v2" ],
-  "assets": {
-    "binding": "ASSETS",
-    "directory": ".svelte-kit/cloudflare"
-  },
-  "observability": {
-    "enabled": true
-  },
-  "route": {
-    "pattern": "timeshare.thelukez.com",
-    "custom_domain": true
-  },
-  "workers_dev": true,
-  "ratelimits": [
-    {
-      "name": "RATE_LIMITER",
-      "namespace_id": "1598",
-      "simple": { "limit": 10, "period": 10 }
-    }
-  ]
+	"name": "timeshare",
+	"main": ".svelte-kit/cloudflare/_worker.js",
+	"compatibility_date": "2026-05-15",
+	"compatibility_flags": [
+		"nodejs_als",
+		"nodejs_compat_v2"
+	],
+	"assets": {
+		"binding": "ASSETS",
+		"directory": ".svelte-kit/cloudflare"
+	},
+	"observability": {
+		"enabled": true
+	},
+	"route": {
+		"pattern": "timeshare.thelukez.com",
+		"custom_domain": true
+	},
+	"workers_dev": true,
+	"ratelimits": [
+		{
+			"name": "RATE_LIMITER",
+			"namespace_id": "1598",
+			"simple": {
+				"limit": 10,
+				"period": 10
+			}
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "timeshare-db",
+			"database_id": "c81c7c7d-f680-42c1-9fd8-25adac11d524",
+			"remote": true
+		}
+	]
 }

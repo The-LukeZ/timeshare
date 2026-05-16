@@ -12,3 +12,4 @@ wrangler.jsonc
 
 src/lib/paraglide/
 src/lib/database.types.ts
+src/worker-configuration.d.ts

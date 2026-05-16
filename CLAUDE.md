@@ -12,11 +12,11 @@ pnpm check:watch      # type checking in watch mode
 pnpm lint             # prettier + eslint
 pnpm format           # prettier write
 
-# Supabase (requires local Docker)
-npx supabase start    # start local Supabase stack
-npx supabase stop
-npx supabase db push  # apply pending migrations to local DB
-pnpm db:types         # regenerate src/lib/database.types.ts from local schema
+# D1 database
+npx wrangler d1 execute timeshare-db --local --file=migrations/0001_initial.sql  # apply schema locally
+npx wrangler d1 execute timeshare-db --remote --file=migrations/0001_initial.sql # apply schema to prod
+npx wrangler d1 execute timeshare-db --local --command="SELECT * FROM timestamps" # query local DB
+pnpm types            # regenerate src/worker-configuration.d.ts from wrangler bindings
 
 # Deploy
 npx wrangler deploy   # deploy to Cloudflare Workers
@@ -26,7 +26,7 @@ npx wrangler deploy   # deploy to Cloudflare Workers
 
 ## Architecture
 
-**Stack**: SvelteKit + Cloudflare Workers (via `adapter-auto` + wrangler) + Supabase (Postgres + RLS).
+**Stack**: SvelteKit + Cloudflare Workers (via `adapter-cloudflare` + wrangler) + Cloudflare D1 (SQLite).
 
 **Purpose**: Create shareable timestamp links. Creator submits a datetime → gets a UUID link. Viewer opens link → sees the time in both their timezone and the creator's timezone. Timezone conversion is purely client-side via `Intl.DateTimeFormat`.
 
@@ -41,13 +41,15 @@ npx wrangler deploy   # deploy to Cloudflare Workers
 
 Key: `timeshare_history`. Value: JSON array (newest first) of `{ id, ts, creatorTimezone, savedAt }`. Only populated when the user creates a moment (via `?created=1` flag on redirect). Visiting a shared link directly never writes to localStorage.
 
-### Supabase clients — two exist, don't confuse them
+### D1 database
 
-- `src/lib/server/supabase.ts` — uses `SUPABASE_SECRET_KEY` (service role). **Server-side only.** Bypasses RLS. Used in `+page.server.ts` files for inserts and reads.
-- `src/lib/supabase.ts` — uses `PUBLIC_SUPABASE_PUBLIC_KEY` (anon key). For future client-side use if needed.
+No client library. Access via `platform.env.DB` (a `D1Database` binding) directly in `+page.server.ts` files. Types generated into `src/worker-configuration.d.ts` via `pnpm types`.
+
+Schema in `migrations/0001_initial.sql`. UUIDs generated in JS via `crypto.randomUUID()`.
 
 ### Cloudflare bindings
 
+- `DB` — D1 database. Absent in `vite dev` (use `wrangler dev` to test D1 locally). Binding + `database_id` in `wrangler.jsonc`.
 - `RATE_LIMITER` — CF Rate Limiter. Guarded with `platform?.env?.RATE_LIMITER` because it's absent in `vite dev`. Namespace ID in `wrangler.jsonc`; replace placeholder with real ID from CF dashboard for prod.
 - Wrangler config: `wrangler.jsonc`. Targets `timeshare.thelukez.com` as a custom domain.
 
@@ -73,17 +75,13 @@ Paraglide (`@inlang/paraglide-js`) handles i18n. `src/hooks.server.ts` wraps req
 
 ### Env vars
 
-| Variable                     | Used in                               |
-| ---------------------------- | ------------------------------------- |
-| `SUPABASE_URL`               | server supabase client                |
-| `SUPABASE_SECRET_KEY`        | server supabase client (service role) |
-| `PUBLIC_SUPABASE_URL`        | client supabase client                |
-| `PUBLIC_SUPABASE_PUBLIC_KEY` | client supabase client (anon)         |
-| `TURNSTILE_SECRET_KEY`       | server action (Turnstile verify)      |
-| `PUBLIC_TURNSTILE_SITE_KEY`  | +page.svelte (widget sitekey)         |
+| Variable                    | Used in                          |
+| --------------------------- | -------------------------------- |
+| `TURNSTILE_SECRET_KEY`      | server action (Turnstile verify) |
+| `PUBLIC_TURNSTILE_SITE_KEY` | +page.svelte (widget sitekey)    |
 
-Dev values (test keys) live in `.env.local` (gitignored).
+D1 needs no env vars — accessed via the `DB` Cloudflare binding. Dev values live in `.env.local` (gitignored).
 
 ### Migrations
 
-Numbered with timestamp prefix in `supabase/migrations/`. After adding a migration: `npx supabase db push` then `pnpm db:types` to regenerate TypeScript types. The `database.types.ts` must be kept in sync — it's the source of truth for typed Supabase queries.
+SQL files in `migrations/`. SQLite syntax (D1). After adding a migration apply with `wrangler d1 execute` (see Commands above). Run `pnpm types` to regenerate `src/worker-configuration.d.ts` after changing bindings.
