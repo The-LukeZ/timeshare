@@ -105,7 +105,7 @@
       </div>
 
       <!-- Separator -->
-      <div class="my-10 flex items-center gap-3">
+      <div class="my-10 flex items-center gap-3 select-none">
         <div class="h-px flex-1 bg-stone-900"></div>
         <span class="text-xs text-stone-700">◆</span>
         <div class="h-px flex-1 bg-stone-900"></div>
